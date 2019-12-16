@@ -1,0 +1,38 @@
+image: node:8
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - apt-get update
+  - apt-get install -y -qq python3-dev python3-pip
+  - pip3 install --upgrade awscli
+  - export PATH=./node_modules/.bin:$PATH
+  - npm install
+
+variables:
+  BUCKET: "s3-deployed-ci-app"
+  LOCAL_DIR: "build"
+
+deploy_development:
+  stage: deploy
+  environment:
+    name: Development
+  only:
+    - develop
+  script:
+    - npm run build
+    - export UPLOAD_DIR=development
+    - awss3-deploy
+
+deploy_staging:
+  stage: deploy
+  environment:
+    name: Staging
+  only:
+    - master
+  script:
+    - npm run build
+    - export UPLOAD_DIR=staging
+    - awss3-deploy
