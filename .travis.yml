@@ -22,7 +22,6 @@ deploy:
     skip_cleanup: true
     script:
       - export UPLOAD_DIR=staging
-      -
       - awss3-deploy
     on:
       branch: master
