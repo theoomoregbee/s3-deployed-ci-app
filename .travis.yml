@@ -13,6 +13,7 @@ deploy:
   - provider: script
     skip_cleanup: true
     script:
+      - echo "rirred of running"
       - export UPLOAD_DIR=development
       - awss3-deploy
     on:
