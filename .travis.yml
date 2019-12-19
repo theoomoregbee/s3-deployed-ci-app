@@ -6,7 +6,7 @@ before_cache:
   - pip install --user awscli
 
 before_deploy:
-  - export BUCKET=s3-deployed-ci-app LOCAL_DIR=build
+  - export BUCKET=s3-deployed-app LOCAL_DIR=build
   - npm run build
   - export PATH=./node_modules/.bin:$PATH
 

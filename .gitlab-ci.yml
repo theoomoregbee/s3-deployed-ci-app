@@ -12,7 +12,7 @@ before_script:
   - npm install
 
 variables:
-  BUCKET: "s3-deployed-ci-app"
+  BUCKET: "s3-deployed-app"
   LOCAL_DIR: "build"
 
 deploy_development:
