@@ -10,6 +10,11 @@ before_deploy:
   - npm run build
   - export PATH=./node_modules/.bin:$PATH
 
+branches:
+  only:
+    - develop
+    - master
+
 deploy:
   - provider: script
     skip_cleanup: true
